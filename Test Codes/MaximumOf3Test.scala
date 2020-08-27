@@ -32,6 +32,20 @@ class MaximumOf3Test extends FunSuite {
     val obj = new  Maximum3Numbers()
     assert(obj.maximumOf3NumbersFloat(7.2f,6.2f,8.2f) == 8.2f)
   }
+  test("test_MaximumStringInputStringatFirstFollowedBySecondAndThirdInput_ReturnFirstInputAsMaximum"){
+    val obj = new  Maximum3Numbers()
+    assert(obj.maximumOf3NumbersString("Peach","Banana","Apple") == "Peach")
+  }
+
+  test("test_MaximumStringInputStringatSecondFollowedByFirstAndThirdInput_ReturnSecondInputAsMaximum") {
+    val obj = new  Maximum3Numbers()
+    assert(obj.maximumOf3NumbersString("Orange","Van","Red") == "Van")
+  }
+
+  test("test_MaximumStringInputNumberatThirdFollowedByFirstAndSecondInput_ReturnThirdInputAsMaximum") {
+    val obj = new  Maximum3Numbers()
+    assert(obj.maximumOf3NumbersString("Keyboard","Chair","Mouse") == "Mouse")
+  }
 }
 
 
