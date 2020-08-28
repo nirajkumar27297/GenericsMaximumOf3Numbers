@@ -1,38 +1,24 @@
 package GenericsProject
+import Ordering.Implicits._
+class Maximum3Numbers[T:Ordering](var x:T,var y:T,var z:T){
+  val firstParam = x
+  val secondParam = y
+  val thirdParam = z
 
-class Maximum3Numbers() {
-
-  def maximumOf3NumbersInt(firstNumber:Int,secondNumber:Int,thirdNumber:Int): Int ={
-    var maxNumber = firstNumber
-    if(secondNumber.compareTo(firstNumber) == 1 && secondNumber.compareTo(thirdNumber) == 1) {
-      maxNumber = secondNumber
-    }
-    if(thirdNumber.compareTo(firstNumber) == 1 && thirdNumber.compareTo(secondNumber) == 1) {
-      maxNumber = thirdNumber
-    }
-    maxNumber
-  }
-  def maximumOf3NumbersFloat(firstNumber:Float,secondNumber:Float,thirdNumber:Float): Float ={
-    var maxNumber = firstNumber
-    if(secondNumber.compareTo(firstNumber) == 1 && secondNumber.compareTo(thirdNumber) == 1) {
-      maxNumber = secondNumber
-    }
-    if(thirdNumber.compareTo(firstNumber) == 1 && thirdNumber.compareTo(secondNumber) == 1) {
-      maxNumber = thirdNumber
-    }
-    maxNumber
-  }
-  def maximumOf3NumbersString(firstString:String,secondString:String,thirdString:String): String ={
-    var maxString = firstString
-    if(secondString.compareTo(firstString) > 0 && secondString.compareTo(thirdString) > 0) {
-      maxString = secondString
-    }
-    if(thirdString.compareTo(firstString) > 0 && thirdString.compareTo(secondString) > 0) {
-      maxString = thirdString
-    }
-    maxString
+  def this() {
+    this(0.asInstanceOf[T],1.asInstanceOf[T],2.asInstanceOf[T])
   }
 
+  def maximumOf3Numbers[T](): T = {
+    var maxParam = firstParam
+    maxParam = compare(maxParam,secondParam)
+    maxParam = compare(maxParam,thirdParam)
+    return maxParam.asInstanceOf[T]
+  }
+
+  def compare[T : Ordering](x: T, y: T) : T = if(x > y) x   else y
 }
+
+
 
 
