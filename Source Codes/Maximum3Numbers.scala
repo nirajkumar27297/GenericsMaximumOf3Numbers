@@ -1,22 +1,22 @@
 package GenericsProject
 import Ordering.Implicits._
-class Maximum3Numbers[T:Ordering](var x:T,var y:T,var z:T){
-  val firstParam = x
-  val secondParam = y
-  val thirdParam = z
+class Maximum3Numbers[T:Ordering](args:T*){
+  var argument = args
 
-  def this() {
-    this(0.asInstanceOf[T],1.asInstanceOf[T],2.asInstanceOf[T])
+  def maximumInArray(): T = {
+    var maxParam = argument(0)
+    for(index <- 1.until(argument.length)) {
+      maxParam = compare(maxParam,argument(index))
+    }
+    printMaximumvalue(maxParam)
+    maxParam
   }
 
-  def maximumOf3Numbers[T](): T = {
-    var maxParam = firstParam
-    maxParam = compare(maxParam,secondParam)
-    maxParam = compare(maxParam,thirdParam)
-    return maxParam.asInstanceOf[T]
+  def printMaximumvalue(maxValue: T): Unit = {
+    println("Maximum Value is "+maxValue)
   }
 
-  def compare[T : Ordering](x: T, y: T) : T = if(x > y) x   else y
+ def compare[T : Ordering](x: T, y: T) : T = if(x > y) x   else y
 }
 
 
